@@ -1,0 +1,10 @@
+.messenger-form {
+	display: flex;
+}
+.messenger-form-input {
+	outline: none;
+	border-right: none;
+}
+.messenger-form-button {
+	flex-shrink: 0;
+}

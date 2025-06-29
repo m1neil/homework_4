@@ -1,0 +1,10 @@
+.message-list:not(:last-child) {
+	margin-bottom: 25px;
+}
+.message-list-item {
+	padding: 25px;
+	border: 2px solid #131313;
+}
+.message-list-item:not(:last-child) {
+	margin-bottom: 15px;
+}

@@ -1,0 +1,57 @@
+.button {
+	padding: 12px 25px;
+	background-color: var(--accent-color);
+	font-weight: 600;
+	font-size: 15px;
+	text-transform: capitalize;
+	line-height: 1.085;
+	letter-spacing: 0.1rem;
+	text-align: center;
+	color: #fff;
+	transition: background-color 0.3s;
+}
+.button.-active,
+.button:disabled {
+	background-color: gray;
+}
+.button-green {
+	background-color: #15d234;
+}
+
+.button:disabled {
+	cursor: default;
+}
+
+@media (any-hover: hover) {
+	.button:not(.-active, :disabled):hover {
+		background-color: #d21532;
+	}
+	.button-green:not(.-active, :disabled):hover {
+		background-color: #12b62e;
+	}
+}
+
+/* =========================================================================== */
+
+.input {
+	height: 50px;
+	padding-inline: 25px;
+	border: 1px solid #131313;
+	transition: border-color 0.3s;
+}
+.input-br-none {
+	border-right: none;
+}
+
+.input::placeholder {
+	letter-spacing: 0.1rem;
+	color: #afafaf;
+	transition: opacity 0.3s;
+}
+
+.input:focus {
+	border-color: var(--accent-color);
+}
+.input:focus::placeholder {
+	opacity: 0;
+}

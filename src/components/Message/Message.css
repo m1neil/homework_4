@@ -1,0 +1,21 @@
+.message {
+}
+.message-text {
+	font-weight: 400;
+	line-height: 1.69;
+	letter-spacing: 0.1rem;
+	margin-bottom: 8px;
+}
+.message-actions {
+	display: flex;
+	column-gap: 10px;
+}
+.message-actions:not(:last-child) {
+	margin-bottom: 15px;
+}
+.massage-button {
+}
+
+.message-amount {
+	font-weight: 600;
+}
