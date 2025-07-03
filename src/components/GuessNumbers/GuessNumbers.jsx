@@ -9,7 +9,7 @@ function GuessNumbers({ numbers, indexGuessNumber }) {
 
 	return (
 		<div className="guess-numbers">
-			<div className="guess-numbers-label"></div>
+			<div className="guess-numbers-label">Число</div>
 			<div className="guess-numbers-items">
 				{numbers.map(({ value, isGuess }, index) => (
 					<div key={index} className={getStylesNumber(isGuess, index)}>

@@ -42,6 +42,12 @@
 .input-br-none {
 	border-right: none;
 }
+.input-px-10 {
+	padding-inline: 10px;
+}
+.input-h-45 {
+	height: 45px;
+}
 
 .input::placeholder {
 	letter-spacing: 0.1rem;

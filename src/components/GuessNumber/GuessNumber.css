@@ -1,0 +1,23 @@
+.guess-number {
+	padding-block: 25px 45px;
+}
+
+.guess-number-players {
+	display: flex;
+	column-gap: 60px;
+	justify-content: center;
+	&:not(:last-child) {
+		margin-bottom: 35px;
+	}
+	.player {
+		flex-shrink: 0;
+		flex-basis: 175px;
+	}
+}
+
+.guess-number-loser {
+	font-weight: 600;
+	color: red;
+	text-align: center;
+	font-size: 19px;
+}

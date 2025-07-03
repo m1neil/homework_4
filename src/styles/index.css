@@ -3,3 +3,36 @@
 @import url("./base/settings");
 @import url("base/base");
 @import url("base/common");
+
+.task {
+	padding-block: 25px 15px;
+}
+.task-container {
+}
+.task-description {
+	font-size: 17px;
+	span {
+		font-weight: 600;
+	}
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}
+
+.task-list {
+	list-style: none;
+	counter-reset: count;
+}
+.task-list-item {
+	display: flex;
+	column-gap: 10px;
+	line-height: 1.4;
+	&::before {
+		content: counter(count) ") ";
+		counter-increment: count;
+		font-variant-numeric: tabular-nums;
+	}
+	&:not(:last-child) {
+		margin-bottom: 2px;
+	}
+}

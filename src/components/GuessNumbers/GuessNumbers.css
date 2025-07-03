@@ -1,10 +1,17 @@
 .guess-numbers {
-	padding-block: 25px;
+	margin-block-end: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 20px;
 }
 .guess-numbers-label {
+	font-weight: 600;
+	font-size: 18px;
 }
 .guess-numbers-items {
 	display: flex;
+	justify-content: center;
 	column-gap: 15px;
 }
 .guess-numbers-item {

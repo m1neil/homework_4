@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GuessNumbers from "../GuessNumbers/GuessNumbers"
 import Player from "../Player/Player"
+import './GuessNumber.css'
 
 function GuessNumber() {
 	const [numbers, setNumbers] = useState(getArrayNumbers)
 	const [indexGuessNumber, setIndexGuessNumber] = useState(0)
+	const [numberLoserPlayer, setNumberLoserPlayer] = useState(null)
 	const [players, setPlayers] = useState(() => [
 		{
 			id: 1,
@@ -22,6 +24,47 @@ function GuessNumber() {
 		}
 	])
 
+	useEffect(() => {
+		if (
+			indexGuessNumber === numbers.length ||
+			players.some(player => player.number === null)
+		) return
+
+		const guessNumber = numbers[indexGuessNumber].value
+		const idPlayerWinner = players.find(player => player.number === guessNumber)?.id
+
+		if (indexGuessNumber === numbers.length - 1)
+			setNumberLoserPlayer(idPlayerWinner)
+
+		if (idPlayerWinner !== undefined) {
+			updateGuessNumbers()
+			setIndexGuessNumber(prevIndex => prevIndex + 1)
+		}
+
+		updatePlayers(idPlayerWinner, guessNumber)
+	}, [players])
+
+	const updatePlayers = (idPlayerWin, guessNumber) => {
+		setPlayers(prevPlayers => (
+			prevPlayers.map(player => {
+				const newPlayer = { ...player, number: null, amountMove: 1 }
+				if (
+					idPlayerWin !== undefined &&
+					player.id === idPlayerWin
+				) newPlayer.guessNumbers = [...player.guessNumbers, guessNumber]
+				return newPlayer
+			})
+		))
+	}
+
+	const updateGuessNumbers = () => {
+		setNumbers(prevNumbers => (
+			prevNumbers.map((number, index) => (
+				index === indexGuessNumber ? { ...number, isGuess: true } : number
+			))
+		))
+	}
+
 	const onSetGuessNumber = (id, number) => {
 		setPlayers(prevPlayers => prevPlayers.map(player => (
 			player.id === id ?
@@ -34,9 +77,9 @@ function GuessNumber() {
 	}
 
 	const isNumberRivalsCoincides = (idRival, numberPlayer) => {
-		const rival = players.find(player => player.id === idRival)
-		if (!rival) return
-		return rival.number === numberPlayer
+		return players.find(player => (
+			player.id === idRival && player.number === numberPlayer
+		))
 	}
 
 	function getArrayNumbers() {
@@ -54,6 +97,15 @@ function GuessNumber() {
 		)
 	}
 
+	let elLoserPlayer = null
+	if (numberLoserPlayer || numberLoserPlayer === 0) {
+		elLoserPlayer = (
+			<div className="guess-number-loser">
+				Пограв гравець {numberLoserPlayer}
+			</div>
+		)
+	}
+
 	return (
 		<div className="guess-number">
 			<div className="guess-number-container">
@@ -62,18 +114,20 @@ function GuessNumber() {
 					indexGuessNumber={indexGuessNumber}
 				/>
 				<div className="guess-number-players">
-					{players.map(({ id, number, idRival, amountMove }) => (
+					{players.map(({ id, number, idRival, amountMove, guessNumbers }) => (
 						<Player
 							key={id}
 							id={id}
 							idRival={idRival}
 							initNumber={number}
 							amountMove={amountMove}
+							guessNumbers={guessNumbers}
 							onSetGuessNumber={onSetGuessNumber}
 							isNumberRivalsCoincides={isNumberRivalsCoincides}
 						/>
 					))}
 				</div>
+				{elLoserPlayer}
 			</div>
 		</div>
 	)
