@@ -63,7 +63,7 @@ function Player({
 					onClick={submitNumber}
 					disabled={isBlockButton || !amountMove}
 					className="player-button button">
-					Make a move
+					Зробити хід
 				</button>
 				{elGuessNumbers}
 			</div>
