@@ -3,7 +3,6 @@ import './Player.css'
 
 function Player({
 	id,
-	idRival,
 	initNumber,
 	amountMove,
 	guessNumbers,
@@ -30,7 +29,7 @@ function Player({
 			setNumber('')
 	}, [initNumber])
 
-	let isBlockButton = isNumberRivalsCoincides(idRival, parseInt(number))
+	let isBlockButton = isNumberRivalsCoincides(id, parseInt(number))
 
 	let elGuessNumbers
 	if (guessNumbers.length > 0)

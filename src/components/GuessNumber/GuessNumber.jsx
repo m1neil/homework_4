@@ -10,14 +10,12 @@ function GuessNumber() {
 	const [players, setPlayers] = useState(() => [
 		{
 			id: 1,
-			idRival: 2,
 			number: null,
 			guessNumbers: [],
 			amountMove: 1
 		},
 		{
 			id: 2,
-			idRival: 1,
 			number: null,
 			guessNumbers: [],
 			amountMove: 1
@@ -76,9 +74,9 @@ function GuessNumber() {
 		)))
 	}
 
-	const isNumberRivalsCoincides = (idRival, numberPlayer) => {
+	const isNumberRivalsCoincides = (id, numberPlayer) => {
 		return players.find(player => (
-			player.id === idRival && player.number === numberPlayer
+			player.id !== id && player.number === numberPlayer
 		))
 	}
 
@@ -114,11 +112,10 @@ function GuessNumber() {
 					indexGuessNumber={indexGuessNumber}
 				/>
 				<div className="guess-number-players">
-					{players.map(({ id, number, idRival, amountMove, guessNumbers }) => (
+					{players.map(({ id, number, amountMove, guessNumbers }) => (
 						<Player
 							key={id}
 							id={id}
-							idRival={idRival}
 							initNumber={number}
 							amountMove={amountMove}
 							guessNumbers={guessNumbers}
