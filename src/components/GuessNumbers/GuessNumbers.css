@@ -1,0 +1,29 @@
+.guess-numbers {
+	padding-block: 25px;
+}
+.guess-numbers-label {
+}
+.guess-numbers-items {
+	display: flex;
+	column-gap: 15px;
+}
+.guess-numbers-item {
+	width: 35px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #131313;
+	font-weight: 500;
+	transition: border-color 0.3s;
+}
+.guess-numbers-item span {
+	transition: opacity 0.3s;
+	opacity: 0;
+}
+.guess-numbers-item.-show span {
+	opacity: 1;
+}
+.guess-numbers-item.-current {
+	border-color: #ff4500;
+}
